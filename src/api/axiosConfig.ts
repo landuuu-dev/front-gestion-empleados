@@ -5,8 +5,8 @@ const api = axios.create({
   auth: {
     username: import.meta.env.VITE_API_USER,
     password: import.meta.env.VITE_API_PASS
-  }
+  },
+  withCredentials: true // 🔹 Importante si usas cookies/sesiones
 });
 
 export default api;
-

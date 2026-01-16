@@ -3,6 +3,8 @@ import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import ListarEmpleados from './pages/ListarEmpleado';
 import RegistrarEmpleado from './pages/RegistrarEmpleado';
 import Login from './pages/Login';
+import { logout } from './api/auth'; // importa tu función
+
 
 // 1. Componente de Protección (Guard)
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -12,11 +14,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   
-  // 2. Función de Cerrar Sesión
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    window.location.href = '/login'; // Recarga para limpiar el estado
-  };
+ 
 
   const isAuth = localStorage.getItem('isAuthenticated') === 'true';
 
@@ -33,7 +31,7 @@ function App() {
                 <Nav.Link as={Link} to="/">Lista de Empleados</Nav.Link>
                 <Nav.Link as={Link} to="/nuevo">Registrar Nuevo</Nav.Link>
               </Nav>
-              <Button variant="outline-light" size="sm" onClick={handleLogout}>
+              <Button variant="outline-light" size="sm" onClick={logout}>
                 Cerrar Sesión
               </Button>
             </Navbar.Collapse>
