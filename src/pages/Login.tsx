@@ -10,10 +10,9 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Validamos contra las mismas credenciales que pusimos en el Backend
     if (user === 'administradorAutorizado' && pass === 'password12390-p') {
-      localStorage.setItem('isAuthenticated', 'true'); // Sesión iniciada
-      navigate('/'); // Redirigir al panel principal
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/');
     } else {
       setError(true);
     }

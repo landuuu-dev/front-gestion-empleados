@@ -6,9 +6,8 @@ import api from '../api/axiosConfig';
 const RegistrarEmpleado = () => {
   const navigate = useNavigate();
 
-  // IMPORTANTE: Los nombres aquí deben ser IDÉNTICOS a los de tu entidad Java
   const [empleado, setEmpleado] = useState({ 
-    rut: '',            // Antes decía rutEmpleado, debe ser 'rut'
+    rut: '',           
     nombre: '', 
     valorHora: 0, 
     valorHoraExtra: 0,
@@ -19,13 +18,12 @@ const RegistrarEmpleado = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Al enviar 'empleado', el JSON llevará la llave "rut"
       await api.post('/empleados', empleado);
       alert("¡Empleado registrado con éxito!");
       navigate('/'); 
     } catch (error: any) {
       console.error("Error del servidor:", error.response?.data);
-      // Esto te dirá exactamente qué campo está fallando si el error persiste
+     
       const mensajeError = error.response?.data?.message || "Error al conectar con el servidor";
       alert("Error al registrar: " + mensajeError);
     }

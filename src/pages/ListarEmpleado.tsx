@@ -49,7 +49,7 @@ const ListarEmpleados = () => {
   const handleEliminar = async (rut: string) => {
     if (window.confirm("¿Está seguro de eliminar este empleado?")) {
       const res = await api.delete(`/empleados/${rut}`);
-      alert(res.data); // Mostrará el mensaje de éxito o la advertencia que hicimos en Java
+      alert(res.data); 
       cargarEmpleados();
     }
   };

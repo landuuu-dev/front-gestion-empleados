@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api/remuneraciones',
+  baseURL: 'https://back-gestion-empleados.onrender.com/api/remuneraciones',
   auth: {
     username: import.meta.env.VITE_API_USER,
     password: import.meta.env.VITE_API_PASS
@@ -9,3 +9,4 @@ const api = axios.create({
 });
 
 export default api;
+
