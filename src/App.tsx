@@ -14,7 +14,10 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   
- 
+ const handleLogout = () => {
+  localStorage.removeItem('isAuthenticated');
+  window.location.href = '/login'; // Esto fuerza el reinicio del estado de la App
+};
 
   const isAuth = localStorage.getItem('isAuthenticated') === 'true';
 
@@ -31,7 +34,7 @@ function App() {
                 <Nav.Link as={Link} to="/">Lista de Empleados</Nav.Link>
                 <Nav.Link as={Link} to="/nuevo">Registrar Nuevo</Nav.Link>
               </Nav>
-              <Button variant="outline-light" size="sm" onClick={logout}>
+              <Button variant="outline-light" size="sm" onClick={handleLogout}>
                 Cerrar Sesión
               </Button>
             </Navbar.Collapse>
